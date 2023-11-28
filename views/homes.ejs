@@ -1,0 +1,46 @@
+<!-- quater.ejs -->
+<%- include('partials/nav.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>News Articles</h1>
+  <div class="container-fluid">
+    <h1>search for <%= searchTerm %></h1>
+    <div class="row">
+      <% news.forEach(article => { %>
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <img src="<%= article.urlToImage %>" class="card-img-top" alt="Article Image" width="60%">
+            <div class="card-body">
+              <h5 class="card-title"><a href="/news/<%= encodeURIComponent(article.title) %>"><%= article.title %></a></h5>
+              <!-- Other content or description here if needed -->
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  
+</body>
+</html>
+ 
+
+<!-- <ul>
+  <% news.forEach(article => { %>
+    <li>
+      <img src="<%= article.urlToImage %>" alt="Article Image" width="40%"><br>
+      <a href="/news/<%= article.title %>"><%= article.title %></a>
+    </li>
+<% }) %>
+</ul> -->
+
+

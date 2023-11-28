@@ -1,0 +1,103 @@
+<%- include('partials/nav.ejs') %>
+<br><br><br><br><br>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="container-fluid">
+  <h1><a href="/finance">Finance News</a></h1>
+<div class="row">
+  <% financeArticles.forEach(article => { %>
+    <div class="col-md-4 mb-3">
+      <!-- Display finance articles -->
+      <div class="card">
+        <img src="<%= article.urlToImage %>" class="card-img-top" alt="Article Image">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/news/<%= encodeURIComponent(article.title) %>"><%= article.title %></a></h5>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+</div>
+
+<div class="container-fluid">
+  <h1><a href="/gaming">gaming News</a></h1>
+  <div class="row">
+    <% gamingArticles.forEach(article => { %>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="<%= article.urlToImage %>" class="card-img-top" alt="Article Image">
+          <div class="card-body">
+            <h5 class="card-title"><a href="/news/<%= encodeURIComponent(article.title) %>"><%= article.title %></a></h5>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <h1><a href="/sport">Sports News</a></h1>
+  <div class="row">
+  <% sportsArticles.forEach(article => { %>
+    <div class="col-md-4 mb-3">
+      <!-- Display sports articles -->
+      <div class="card">
+        <img src="<%= article.urlToImage %>" class="card-img-top" alt="Article Image">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/news/<%= encodeURIComponent(article.title) %>"><%= article.title %></a></h5>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+</div> 
+<div class="container-fluid bg-secondary"><br>
+  <h3>Explore Daily Pulse</h3>
+  <div class="row">
+      <div class="col border border-top-0 border-left-0"><a href=""><ul>
+          <li style="list-style-type: none;"><a href="/" style="text-decoration: none; font-size: 20px;color: white;">Home</a></li>
+          <li style="list-style-type: none;"><a href="/sport" style="text-decoration: none; font-size: 20px;color: white;">Sport</a></li>
+          <li style="list-style-type: none;"><a href="/finance" style="text-decoration: none; font-size: 20px;color: white;">Finance</a></li>
+          <li style="list-style-type: none;"><a href="/travel" style="text-decoration: none; font-size: 20px;color: white;">Travel</a></li>
+          <li style="list-style-type: none;"><a href="/culture" style="text-decoration: none; font-size: 20px;color: white;">Culture</a></li>
+      </ul></a></div>
+      <div class="col border border-top-0 border-left-0"><a href=""><ul>
+          <li style="list-style-type: none;"><a href="/weather" style="text-decoration: none; font-size: 20px;color: white;">Weather</a></li>
+          <li style="list-style-type: none;"><a href="/tech" style="text-decoration: none; font-size: 20px;color: white;">Tech</a></li>
+          <li style="list-style-type: none;"><a href="/breaking" style="text-decoration: none; font-size: 20px;color: white;">Breaking</a></li>
+          <li style="list-style-type: none;"><a href="/music" style="text-decoration: none; font-size: 20px;color: white;">Music</a></li>
+          <li style="list-style-type: none;"><a href="" style="text-decoration: none; font-size: 20px;color: white;">Life style</a></li>
+      </ul></a></div>
+      <div class="col border border-top-0 border-left-0"><a href=""><ul>
+          <li style="list-style-type: none;"><a href="/tv"style="text-decoration: none; font-size: 20px;color: white;">Tv</a></li>
+          <li style="list-style-type: none;"><a href="/world"style="text-decoration: none; font-size: 20px;color: white;">World</a></li>
+          <li style="list-style-type: none;"><a href="/middle-east"style="text-decoration: none; font-size: 20px;color: white;">Middle-east</a></li>
+          <li style="list-style-type: none;"><a href="/earth"style="text-decoration: none; font-size: 20px;color: white;">Earth</a></li>
+          <li style="list-style-type: none;"><a href="/cars"style="text-decoration: none; font-size: 20px;color: white;">Cars</a></li>
+      </ul></a></div>
+  </div><br>
+  <div class="row">
+      <div class="col"><a  href="/about" style="text-decoration: none; color: white;">About Daily Pulse</a></div>
+      <div class="col"><a  href="https://twitter.com/AbangTah"><i class="fa fa-twitter" aria-hidden="true" style="color: lightblue; font-size: 18px;"></i></a></div>
+      <div class="col"><a  href="https://github.com/123abang"><i class="fa fa-github" aria-hidden="true" style="color: black; font-size: 18px;"></i></a></div>
+      <div class="col"><a  href="https://www.linkedin.com/in/abang-tah-a343b2261/"><i class="fa fa-linkedin" aria-hidden="true" style="color: black; font-size: 18px;"></i></a></div>
+  </div><br>
+  <div class="row">
+      <div class="col"><a href="#" style="text-decoration: none; color: white;">privacy policy</a></div>
+      <div class="col"><a href="#" style="text-decoration: none; color: white;">Cookies</a></div>
+      <div class="col"><a href="#" style="text-decoration: none; color: white;">Terms & Condition</a></div>
+      <div class="col"><a href="#" style="text-decoration: none; color: white;">Advertise with us</a></div>
+  </div><br>
+  <h5 style="color: white;">Copyright &copy 2023 Dialy Pulse. The BBC is not responsible for the content of external sites. Read about our approach to external linking.</h5>
+  <h2 style="visibility: hidden;">snssnns</h2>
+</div>
+</body>
+</html>
+<!-- <%- include('partials/footer.ejs') %> -->

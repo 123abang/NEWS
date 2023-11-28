@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b49d1e3afe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <script src="/bootstrap/jquery.slim.min.js"></script>
+    <script src="/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/bootstrap/popper.min.js"></script>
+    <title>Document</title>
+    <style>
+      /* #images{
+        border: 1px solid white;
+        background-color: black;
+      } */
+      #nav{
+        /* position: fixed; */
+        background-color: black;
+      }
+      .center{
+        display: grid;
+        justify-items: center;
+      }
+      ::placeholder{
+        color: red;
+      }
+      .nav-kink{
+        color: white;
+      }
+      #check{
+        text-decoration: none;
+        transition: text-decoration 0.3s ease-in-out;
+      }
+      #check:hover{
+        text-decoration: underline;
+        color: red;
+      }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top " id="nav">
+        <a class="navbar-brand" href="#"><H1 style="color: purple;">DAILY PULSE</H1></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-light" href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link text-light dropdown-toggle" href="/sport"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                sport
+              </a>
+              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-light" href="/football" id="check">Football</a>
+                <a class="dropdown-item text-light" href="/basketball" id="check">Basketball</a>
+                <a class="dropdown-item text-light" href="/boxing" id="check">Boxing</a>
+                <a class="dropdown-item text-light" href="/racing" id="check">Racing</a>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/finance">Finance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/travel" id="check">Travel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/culture" id="check">Culture</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/weather" id="check">Weather</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/tech" id="check">Tech</a>
+            </li>       
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/breaking" id="check">Breaking News</a>
+            </li>       
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More
+              </a>
+              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-light" href="/music" id="check">Music</a>
+                <a class="dropdown-item text-light" href="/life" id="check">Life style</a>
+                <a class="dropdown-item text-light" href="/tv" id="check">Tv</a>
+                <a class="dropdown-item text-light" href="/world" id="check">World</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="/" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search for news here" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav><br><br><br><br><br>
+      <!-- <div class="container-fluid">
+        <div class="center">
+          <img src="/images/Order.png" alt="" width="85%">
+        </div>
+      </div> -->
+</body>
+</html>
