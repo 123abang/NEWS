@@ -52,7 +52,7 @@ app.get('/home', async (req, res) => {
 
 
 
-        console.log(sportData);
+        // console.log(sportData);
         res.render('welcome.ejs', {
             sportsArticles: sportData.articles,
             financeArticles: financeData.articles,
