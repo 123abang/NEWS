@@ -8,9 +8,7 @@ import { dirname } from 'path';
 import dotenv from 'dotenv'
 dotenv.config()
 import mongoose from 'mongoose'
-import session from 'express-session'
-import passport from 'passport'
-import passportlocalmongoose from 'passport-local-mongoose'
+
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/NewsDB',{useNewUrlParser:true})
