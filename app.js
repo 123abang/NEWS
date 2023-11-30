@@ -51,8 +51,6 @@ app.get('/home', async (req, res) => {
         const gamingData=await gamingResponse.json()
 
 
-
-        // console.log(sportData);
         res.render('welcome.ejs', {
             sportsArticles: sportData.articles,
             financeArticles: financeData.articles,
