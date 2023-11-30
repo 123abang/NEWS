@@ -7,6 +7,23 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import dotenv from 'dotenv'
 dotenv.config()
+import mongoose from 'mongoose'
+import session from 'express-session'
+import passport from 'passport'
+import passportlocalmongoose from 'passport-local-mongoose'
+
+
+mongoose.connect('mongodb://127.0.0.1:27017/NewsDB',{useNewUrlParser:true})
+
+
+const userSchema = mongoose.Schema({
+    email:String,
+    password:String
+})
+
+
+
+const User= new mongoose.model('user',userSchema)
 
 
 
@@ -23,7 +40,7 @@ app.use(express.static('public'))
 
 const apikey= process.env.API_KEY;
 
-app.get('/', async (req, res) => {
+app.get('/home', async (req, res) => {
     try {
         const sportResponse = await fetch('https://newsapi.org/v2/everything?q=sports&apiKey='+apikey);
         const financeResponse = await fetch('https://newsapi.org/v2/everything?q=business&apiKey='+apikey);
@@ -37,7 +54,7 @@ app.get('/', async (req, res) => {
 
 
 
-        // console.log(sportData);
+        console.log(sportData);
         res.render('welcome.ejs', {
             sportsArticles: sportData.articles,
             financeArticles: financeData.articles,
@@ -49,6 +66,18 @@ app.get('/', async (req, res) => {
         res.status(500).send('Error fetching news');
     }
 });
+
+app.get('/login',(req,res)=>{
+    res.render('login.ejs')
+})
+
+app.get('/SignUp',(req,res)=>{
+    res.render('signup.ejs')
+})
+
+app.get('/',(req,res)=>{
+    res.render('require.ejs')
+})
 
 
 app.post('/', async (req, res) => {
@@ -769,6 +798,34 @@ app.post('/breaking', async (req, res) => {
         res.status(500).send('Error fetching news');
     }
 });
+
+app.post('/signup',(req,res)=>{
+    const login=new User({
+      email:req.body.user,
+      password:req.body.password
+    })
+    login.save()
+    .then(()=>{
+      res.redirect('/home')
+    }).catch((err)=>{
+      res.send(err)
+    })
+  })
+  
+  app.post('/login',(req,res)=>{
+    const username=req.body.user
+    const password=req.body.password
+    User.findOne({email:username})
+  
+    .then((founduser)=>{
+     if(founduser.password===password){
+       res.redirect('/home')
+     }
+    }).catch((err)=>{
+     console.log(err)
+     res.send('user not found register first')
+    })
+  })
   
 
 app.listen(4000,()=>{
