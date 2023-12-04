@@ -1,42 +1,45 @@
-import express from 'express'
-import ejs from 'ejs'
-import node from 'node-fetch'
-import news from 'newsapi'
-import body from 'body-parser'
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import dotenv from 'dotenv'
-dotenv.config()
-import mongoose from 'mongoose'
+// Import necessary packages
+import express from 'express'; // Import Express.js framework
+import ejs from 'ejs'; // Templating engine for rendering HTML
+import fetch from 'node-fetch'; // Fetch for making HTTP requests
+import body from 'body-parser'; // Middleware for parsing incoming request bodies
+import { fileURLToPath } from 'url'; // Utilities for working with file paths
+import { dirname } from 'path'; // Utilities for working with file paths
+import dotenv from 'dotenv'; // For managing environment variables
+dotenv.config(); // Load environment variables
 
-
-
-mongoose.connect('mongodb://127.0.0.1:27017/NewsDB',{useNewUrlParser:true})
-
-
+// Import and initialize MongoDB and define user schema
+import mongoose from 'mongoose'; // Import MongoDB ORM
+mongoose.connect('mongodb://127.0.0.1:27017/NewsDB',{useNewUrlParser:true}) // Connect to MongoDB
+.then(() => console.log('Connected to MongoDB')) // On successful connection, log success
+.catch((err) => console.error('MongoDB connection error:', err)); // Log any connection errors
 const userSchema = mongoose.Schema({
-    email:String,
-    password:String
+    email:{
+        type:String,
+        required:true, // Require an email for user
+    },
+    password:{
+        type:String,
+        required:true // Require a password for user
+    }
 })
+const User= new mongoose.model('user',userSchema); // Create User model
 
-
-
-const User= new mongoose.model('user',userSchema)
-
-
-
+// Initialize Express app
+const app= express(); // Create an instance of Express
 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+// Middleware setup
+app.use(body.urlencoded({extended:true})); // Body parser middleware for URL-encoded data
+app.use(express.static('public')); // Serve static files
 
-const app= express()
+const apikey= process.env.API_KEY; // Fetch API key from environment variables
 
-app.use(body.urlencoded({extended:true}))
+// Route to fetch and render news based on categories
 
-app.use(express.static('public'))
 
-const apikey= process.env.API_KEY;
 
 app.get('/home', async (req, res) => {
     try {
@@ -89,6 +92,7 @@ app.post('/', async (req, res) => {
         res.status(500).send('Error fetching news');
     }
 });
+
 
 app.get('/news/:title', async (req, res) => {
     try {
@@ -798,19 +802,19 @@ app.post('/breaking', async (req, res) => {
 app.post('/signup',(req,res)=>{
     const login=new User({
       email:req.body.user,
-      password:req.body.password
+      password:md5(req.body.password)
     })
     login.save()
     .then(()=>{
       res.redirect('/home')
     }).catch((err)=>{
-      res.send(err)
+      res.send('error creating user')
     })
   })
   
   app.post('/login',(req,res)=>{
     const username=req.body.user
-    const password=req.body.password
+    const password=md5(req.body.password)
     User.findOne({email:username})
   
     .then((founduser)=>{
