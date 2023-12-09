@@ -1,5 +1,5 @@
-# NEWS
-Get the latest news around the globe .
-Choose from the different categories of news you want.
-This project is mainly focused on a good user interface and responsiveness.
-Easy to understand.
+# About NEWS API
+Get the latest news around the world . It fetches the news from an Api called NewsApi
+for more about it visit https://newsapi.org/doc 
+
+
