@@ -6,6 +6,7 @@ import body from 'body-parser'; // Middleware for parsing incoming request bodie
 import { fileURLToPath } from 'url'; // Utilities for working with file paths
 import { dirname } from 'path'; // Utilities for working with file paths
 import dotenv from 'dotenv'; // For managing environment variables
+import md5 from 'md5'
 dotenv.config(); // Load environment variables
 
 // Import and initialize MongoDB and define user schema
@@ -77,6 +78,8 @@ app.get('/SignUp',(req,res)=>{
 app.get('/',(req,res)=>{
     res.render('require.ejs')
 })
+
+
 
 
 app.post('/', async (req, res) => {
@@ -826,7 +829,9 @@ app.post('/signup',(req,res)=>{
      res.send('user not found register first')
     })
   })
-  
+  app.use((req, res, next) => {
+    res.status(404).render('error.ejs');
+  });
 
 app.listen(4000,()=>{
     console.log('running @ 4000');
